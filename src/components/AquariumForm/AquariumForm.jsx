@@ -51,7 +51,7 @@ function AquariumForm({ data }) {
 
   return (
     <div className="aquarium-form">
-      <h3>Návrh velikosti akvária</h3>
+      <h2>Návrh velikosti akvária</h2>
       <p>Počet malých ryb: {small} ks</p>
       <p>Počet velkých ryb: {big} ks</p>
       <p>Požadovaný objem akvária: {requiredSize} l</p>

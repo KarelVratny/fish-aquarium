@@ -109,9 +109,7 @@ function App() {
         )}
         {activeTab === 2 && (
           <>
-            <>
-              <AquariumForm data={listOfFish} />
-            </>
+            <AquariumForm data={listOfFish} />
           </>
         )}
       </PageContainer>
