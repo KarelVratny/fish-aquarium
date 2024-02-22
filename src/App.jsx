@@ -1,6 +1,6 @@
 import "./App.css";
 import rawData from "./fishData.json";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import PageContainer from "./components/PageContainer/PageContainer";
 import Toggler from "./components/Toggler/Toggler";
 import FishList from "./components/FishList/FishList";
@@ -18,8 +18,6 @@ function App() {
     name: "",
     breed: "",
   });
-  // promena pro predani velikosti ryby
-  let fishSize;
 
   const [valid, setValid] = useState(false);
 
@@ -58,6 +56,15 @@ function App() {
     setListOfFish(listOfFish.filter((fish) => fish.id !== idToDelete));
   };
 
+  // promena pro predani velikosti ryby
+  let fishSize;
+
+  // velikost z RBtn
+  const handleDataToParent = (size) => {
+    fishSize = size;
+    console.log(fishSize);
+  };
+
   const handleChange = (event) => {
     const updatedFish = {
       ...newFish,
@@ -81,11 +88,6 @@ function App() {
     };
     setNewFish(updatedFish);
     validateData(updatedFish);
-  };
-
-  // velikost z RBtn
-  const handleDataToParent = (size) => {
-    fishSize = size;
   };
 
   return (
