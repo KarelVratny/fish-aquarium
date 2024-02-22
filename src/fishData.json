@@ -1,0 +1,24 @@
+{
+  "fish": [
+    {
+      "id": 1,
+      "name": "Finley",
+      "breed": "malá"
+    },
+    {
+      "id": 2,
+      "name": "Sushi",
+      "breed": "velká"
+    },
+    {
+      "id": 3,
+      "name": "Nemo",
+      "breed": "malá"
+    },
+    {
+      "id": 4,
+      "name": "Nibbles",
+      "breed": "velká"
+    }
+  ]
+}
