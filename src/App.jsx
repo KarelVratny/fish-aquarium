@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import PageContainer from "./components/PageContainer/PageContainer";
 import Toggler from "./components/Toggler/Toggler";
 import FishList from "./components/FishList/FishList";
+import FishForm from "./components/FishForm/FishForm";
 
 function App() {
   // data ryb
@@ -19,6 +20,16 @@ function App() {
   });
 
   const [valid, setValid] = useState(false);
+
+  const validateData = (fish) => {
+    if (fish.name.trim().length === 0) {
+      setValid(false);
+    } else if (fish.breed.trim().length === 0) {
+      setValid(false);
+    } else {
+      setValid(true);
+    }
+  };
 
   const [activeTab, setActiveTab] = useState(1);
 
@@ -43,6 +54,28 @@ function App() {
     setListOfFish(listOfFish.filter((fish) => fish.id !== idToDelete));
   };
 
+  const handleChange = (event) => {
+    const updatedFish = { ...newFish, [event.target.name]: event.target.value };
+    setNewFish(updatedFish);
+    validateData(updatedFish);
+  };
+
+  // pridani ryby
+  const handleAdd = () => {
+    setListOfFish((listOfFish) => {
+      return [...listOfFish, newFish];
+    });
+    const newFishId = newFish.id + 1;
+    const updatedFish = {
+      id: newFishId,
+      name: "",
+      breed: "",
+      age: "",
+    };
+    setNewFish(updatedFish);
+    validateData(updatedFish);
+  };
+
   return (
     <div className="App">
       <PageContainer>
@@ -50,6 +83,12 @@ function App() {
         {activeTab === 1 && (
           <>
             <FishList data={listOfFish} onDelete={handleDelete} />
+            <FishForm
+              data={newFish}
+              validation={valid}
+              onChange={handleChange}
+              onAdd={handleAdd}
+            />
           </>
         )}
         {activeTab === 2 && (
