@@ -3,6 +3,7 @@ import rawData from "./fishData.json";
 import { useEffect, useState } from "react";
 import PageContainer from "./components/PageContainer/PageContainer";
 import Toggler from "./components/Toggler/Toggler";
+import FishList from "./components/FishList/FishList";
 
 function App() {
   // data ryb
@@ -37,13 +38,18 @@ function App() {
     }
   };
 
+  // mazani ryb
+  const handleDelete = (idToDelete) => {
+    setListOfFish(listOfFish.filter((fish) => fish.id !== idToDelete));
+  };
+
   return (
     <div className="App">
       <PageContainer>
         <Toggler active={activeTab} onChoose={handleChoose} />
         {activeTab === 1 && (
           <>
-            <h2>Fish list</h2>
+            <FishList data={listOfFish} onDelete={handleDelete} />
           </>
         )}
         {activeTab === 2 && (

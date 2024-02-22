@@ -1,14 +1,14 @@
 import React from "react";
-import "./DogList.css";
+import "./FishList.css";
 
-function DogList({ data, onDelete }) {
+function FishList({ data, onDelete }) {
   return (
     <div className="list">
       {data.map((item) => {
         return (
           <div className="item" key={item.id}>
             <span>
-              {item.name} / {item.breed} / {item.age}
+              {item.name} / {item.breed}
             </span>
             <button className="btn-delete" onClick={() => onDelete(item.id)}>
               X
@@ -20,4 +20,4 @@ function DogList({ data, onDelete }) {
   );
 }
 
-export default DogList;
+export default FishList;
