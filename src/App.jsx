@@ -18,15 +18,19 @@ function App() {
     name: "",
     breed: "",
   });
+  // promena pro predani velikosti ryby
+  let fishSize;
 
   const [valid, setValid] = useState(false);
 
   const validateData = (fish) => {
     if (fish.name.trim().length === 0) {
       setValid(false);
-    } else if (fish.breed.trim().length === 0) {
-      setValid(false);
-    } else {
+    }
+    // else if (fish.breed.trim().length === 0) {
+    //   setValid(false);
+    // }
+    else {
       setValid(true);
     }
   };
@@ -55,7 +59,11 @@ function App() {
   };
 
   const handleChange = (event) => {
-    const updatedFish = { ...newFish, [event.target.name]: event.target.value };
+    const updatedFish = {
+      ...newFish,
+      [event.target.name]: event.target.value,
+      breed: fishSize,
+    };
     setNewFish(updatedFish);
     validateData(updatedFish);
   };
@@ -70,10 +78,14 @@ function App() {
       id: newFishId,
       name: "",
       breed: "",
-      age: "",
     };
     setNewFish(updatedFish);
     validateData(updatedFish);
+  };
+
+  // velikost z RBtn
+  const handleDataToParent = (size) => {
+    fishSize = size;
   };
 
   return (
@@ -88,6 +100,7 @@ function App() {
               validation={valid}
               onChange={handleChange}
               onAdd={handleAdd}
+              handleDataToParent={handleDataToParent}
             />
           </>
         )}
