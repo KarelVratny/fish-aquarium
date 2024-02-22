@@ -58,11 +58,13 @@ function App() {
   };
 
   // promena pro predani velikosti ryby
-  let fishSize;
+  const [fishSize, setFishSize] = useState();
+  // let fishSize;
 
   // velikost z RBtn
   const handleDataToParent = (size) => {
-    fishSize = size;
+    // fishSize = size;
+    setFishSize(size);
     console.log(fishSize);
   };
 
@@ -104,6 +106,7 @@ function App() {
               onChange={handleChange}
               onAdd={handleAdd}
               handleDataToParent={handleDataToParent}
+              fishSize={fishSize}
             />
           </>
         )}

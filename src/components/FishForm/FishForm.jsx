@@ -1,6 +1,6 @@
 import React from "react";
 import "./FishForm.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function FishForm({ data, onChange, validation, onAdd, handleDataToParent }) {
   // velikost ryby
@@ -11,7 +11,12 @@ function FishForm({ data, onChange, validation, onAdd, handleDataToParent }) {
     setSizeOfFish(e.target.value);
   };
 
-  handleDataToParent(sizeOfFish);
+  // handleDataToParent(sizeOfFish);
+
+  // Use useEffect to call handleDataToParent when sizeOfFish changes
+  useEffect(() => {
+    handleDataToParent(sizeOfFish);
+  }, [sizeOfFish, handleDataToParent]);
 
   return (
     <div className="fish-form">
