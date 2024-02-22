@@ -58,22 +58,20 @@ function App() {
   };
 
   // promena pro predani velikosti ryby
-  const [fishSize, setFishSize] = useState();
-  // let fishSize;
+  const [fishSize, setFishSize] = useState("malá");
 
-  // velikost z RBtn
-  const handleDataToParent = (size) => {
-    // fishSize = size;
-    setFishSize(size);
-    console.log(fishSize);
-  };
+  //  pro kontrolu vypis zmen
+  // useEffect(() => {
+  //   console.log(fishSize);
+  // }, [fishSize]);
 
   const handleChange = (event) => {
+    if (event.target.name === "breed") setFishSize(event.target.value);
     const updatedFish = {
       ...newFish,
       [event.target.name]: event.target.value,
-      breed: fishSize,
     };
+    if (updatedFish.breed === "") updatedFish.breed = fishSize;
     setNewFish(updatedFish);
     validateData(updatedFish);
   };
@@ -102,11 +100,10 @@ function App() {
             <FishList data={listOfFish} onDelete={handleDelete} />
             <FishForm
               data={newFish}
+              fishSize={fishSize}
               validation={valid}
               onChange={handleChange}
               onAdd={handleAdd}
-              handleDataToParent={handleDataToParent}
-              fishSize={fishSize}
             />
           </>
         )}

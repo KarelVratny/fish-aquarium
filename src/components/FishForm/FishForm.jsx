@@ -1,23 +1,7 @@
 import React from "react";
 import "./FishForm.css";
-import { useState, useEffect } from "react";
 
-function FishForm({ data, onChange, validation, onAdd, handleDataToParent }) {
-  // velikost ryby
-  const [sizeOfFish, setSizeOfFish] = useState("malá");
-
-  // funkce pro prepinani radio buttonu
-  const handleSize = (e) => {
-    setSizeOfFish(e.target.value);
-  };
-
-  // handleDataToParent(sizeOfFish);
-
-  // Use useEffect to call handleDataToParent when sizeOfFish changes
-  useEffect(() => {
-    handleDataToParent(sizeOfFish);
-  }, [sizeOfFish, handleDataToParent]);
-
+function FishForm({ fishSize, data, onChange, validation, onAdd }) {
   return (
     <div className="fish-form">
       <input
@@ -33,8 +17,8 @@ function FishForm({ data, onChange, validation, onAdd, handleDataToParent }) {
           name="breed"
           id="small"
           value="malá"
-          checked={sizeOfFish === "malá"}
-          onChange={handleSize}
+          checked={fishSize === "malá"}
+          onChange={onChange}
         />
         <label htmlFor="small">malá</label>
       </div>
@@ -44,8 +28,8 @@ function FishForm({ data, onChange, validation, onAdd, handleDataToParent }) {
           name="breed"
           id="big"
           value="velká"
-          checked={sizeOfFish === "velká"}
-          onChange={handleSize}
+          checked={fishSize === "velká"}
+          onChange={onChange}
         />
         <label htmlFor="big">velká</label>
       </div>
