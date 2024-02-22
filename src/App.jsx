@@ -5,6 +5,7 @@ import PageContainer from "./components/PageContainer/PageContainer";
 import Toggler from "./components/Toggler/Toggler";
 import FishList from "./components/FishList/FishList";
 import FishForm from "./components/FishForm/FishForm";
+import AquariumForm from "./components/AquariumForm/AquariumForm";
 
 function App() {
   // data ryb
@@ -108,7 +109,9 @@ function App() {
         )}
         {activeTab === 2 && (
           <>
-            <h2>Fishbowl</h2>
+            <>
+              <AquariumForm data={listOfFish} />
+            </>
           </>
         )}
       </PageContainer>
